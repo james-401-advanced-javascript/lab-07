@@ -16,25 +16,31 @@
 
 ### Modules
 
-#### `model.js`
+#### `people-routes.js`
 
-#### `people.js`
+#### `team-routes.js`
 
-#### `teams.js`
+#### `timestamp.js`
+
+#### `message.js`
+
+#### `404.js`
+
+#### `500.js`
 
 ##### Exported Values and Methods
 
-###### `create(item)`
+###### `getAll(object)`
 
-###### `get(_id)`
+###### `getPerson(object)`
 
-###### `getByQuery(query)`
+###### `createPerson(object)`
 
-###### `update(_id, item)`
+###### `updatePerson(object)`
 
-###### `getFromField(_id)`
+###### `updatePerson(object`
 
-###### `count(obj)`
+###### `deletePerson(object)`
 
 ### Setup
 
@@ -51,7 +57,6 @@
 
 - How do you run tests?
 - `npm test`
-- `npm start`
 
 #### UML
 
