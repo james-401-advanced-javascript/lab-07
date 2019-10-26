@@ -40,14 +40,14 @@ describe('web server', () => {
   });
 
   // Team testing
-  it('should respond properly on request to /teams', () => {
-    mockServer
-      .get('/teams')
-      .then(results => {
-        expect(results.status).toBe(200);
-        expect(results.body.count).toBe(3);
-      })
-      .catch(console.error);
+  it('should respond properly on request to /teams', async () => {
+    try {
+      let results = await mockServer.get('/teams');
+      expect(results.status).toBe(200);
+      expect(results.body.count).toBe(3);
+    } catch (e) {
+      console.error(e);
+    }
   });
 
   test('async/await: should respond properly on request to /teams', async () => {
