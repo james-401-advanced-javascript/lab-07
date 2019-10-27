@@ -12,7 +12,7 @@
 
 #### Documentation
 
-- [jsdoc](https://jamesdunn-lab-07.herokuapp.com:3100/api-docs)
+##### Swagger docs located in docs folder reader to generate. Needs environment variables
 
 ### Modules
 
