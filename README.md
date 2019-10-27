@@ -12,7 +12,7 @@
 
 #### Documentation
 
-- [jsdoc](https://jamesdunn-lab-07.herokuapp.com/docs)
+- [jsdoc](https://jamesdunn-lab-07.herokuapp.com:3100/api-docs)
 
 ### Modules
 
@@ -47,11 +47,13 @@
 #### `.env` requirements
 
 - `PORT` - 3000
+- `SWAG_PORT` - 3001
+- `HOST_URL` - https://jamesdunn-lab-07.herokuapp.com
 
 #### Running the app
 
 - `npm start`
-- Endpoint: `server.js`
+- Endpoint: `index.js`
 
 #### Tests
 
