@@ -28,15 +28,27 @@ describe('web server', () => {
       console.error(e);
     }
   });
-  it('should respond properly on post to /teams', () => {
-    mockServer
-      .post('/people')
-      .send({ firstName: 'Test', lastName: 'Team' })
-      .then(results => {
-        expect(results.status).toBe(200);
-        expect(results.body.firstName).toBe('Test');
-      })
-      .catch(console.error);
+
+  it('should respond properly to a put request on /people route', async () => {
+    try {
+      let data = await mockServer
+        .put('/people/4')
+        .send({ firstName: 'Darren' });
+
+      expect(data.status).toBe(200);
+      expect(data.body.firstName).toBe('Darren');
+    } catch (e) {
+      console.error(e);
+    }
+  });
+  it('should respond properly to a delete request on /people route', async () => {
+    try {
+      let data = await mockServer.delete('/people/4');
+
+      expect(data.status).toBe(200);
+    } catch (e) {
+      console.error(e);
+    }
   });
 
   // Team testing
@@ -61,14 +73,51 @@ describe('web server', () => {
     }
   });
 
-  it('should respond properly on post to /people', () => {
-    mockServer
-      .post('/teams')
-      .send({ name: 'Black Panther', color: 'Black' })
-      .then(results => {
-        expect(results.status).toBe(200);
-        expect(results.body.name).toBe('Black Panther');
-      })
-      .catch(console.error);
+  it('should respond properly on post to /teams', async () => {
+    try {
+      let results = await mockServer
+        .post('/teams')
+        .send({ name: 'Black Panther', color: 'Black' });
+
+      expect(results.status).toBe(200);
+    } catch (e) {
+      console.error(e);
+    }
+  });
+  it('should respond properly to a put request on /teams route', async () => {
+    try {
+      let data = await mockServer.put('/teams/4').send({ color: 'red' });
+      console.log('DA DATA: ', data.valid);
+      expect(data.status).toBe(200);
+    } catch (e) {
+      console.error(e);
+    }
+  });
+  it('should respond properly to a delete request on /teams route', async () => {
+    try {
+      let data = await mockServer.delete('/teams/3');
+
+      expect(data.status).toBe(200);
+    } catch (e) {
+      console.error(e);
+    }
+  });
+  it('should log a 400 error if unknown route', async () => {
+    try {
+      let data = await mockServer.get('/fakeroute');
+
+      expect(data.status).toBe(404);
+    } catch (e) {
+      console.error(e);
+    }
+  });
+  it('should log a 500 error if someone goes to /error route', async () => {
+    try {
+      let data = await mockServer.get('/500error');
+
+      expect(data.status).toBe(500);
+    } catch (e) {
+      console.error(e);
+    }
   });
 });
